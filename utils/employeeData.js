@@ -1,4 +1,4 @@
-class employeeData {
+class EmployeeData {
     async viewDepartments() {
         const sql = `SELECT * FROM departments`;
         const [rows] = await this.db.query(sql)
@@ -17,13 +17,13 @@ class employeeData {
         return rows
     }
     async addDepartment (department) {
-        const sql = `INSERT INTO department (name) VALUES (?)`;
+        const sql = `INSERT INTO departments (name) VALUES (?)`;
         const [ result ] = await this.db.execute (sql, [department])
         if (result.affectedRows === 1) return this.viewDepartments()
     }
     async addEmployee ({ last_name, first_name, role_id, manager_id}) {
         try {
-            const sql = `INSERT INTO employees (last_name, first_name, role_id, manager_id) VALUES (?,?,?,?)`;
+            const sql = `INSERT INTO employee (last_name, first_name, role_id, manager_id) VALUES (?,?,?,?)`;
             const [ result ] = await this.db.execute(sql, [last_name,first_name,role_id, manager_id])
             if (result.affectedRows === 1) return this.viewEmployees()
         } catch (error) {
@@ -32,4 +32,4 @@ class employeeData {
     }
 };
 
-module.exports = employeeData
+module.exports = EmployeeData

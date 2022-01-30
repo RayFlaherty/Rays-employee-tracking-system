@@ -2,19 +2,19 @@ require ('dotenv').config();
 const inquirer = require ('inquirer');
 require ("console.table");
 const mysql = require('mysql2/promise');
-const employeeData = require('./utils/employeeData');
-const employeeData = require ('./utils/employeeData');
+//const employeeData = require('./utils/employeeData');
+const EmployeeData = require ('./utils/EmployeeData');
 
 async function init(){
     try{
         const connection = await mysql.createConnection({
             host: process.env.DB_HOST,
-            database: process.env.DB_DATABASE,
-            user: process.env.DB_USER,
-            password: process.env.DB_PASS
+            database: process.env.DB_DATABASE = 'employee_tracker',
+            user: process.env.DB_USER = 'root',
+            password: process.env.DB_PASS = 'Vandy1'
         })
 
-        const employeeData = new employeeData(connection)
+        const employeeData = new EmployeeData(connection)
 
         let exit = false
 
@@ -22,7 +22,8 @@ async function init(){
             const selection = await inquirer.prompt({
                 type: 'list',
                 name: 'choice',
-                message: [
+                message: 'What would you like to do?',
+                choices: [
                     'View all Departments',
                     'View all Roles',
                     'View all Employees',
@@ -78,7 +79,7 @@ async function init(){
                         },
                     ];
                     const answers = await inquirer.prompt (info);
-                        console.table(await employeeData.newEmployee(answers))
+                        console.table(await employeeData.addEmployee(answers))
                         break;
 
                         case 'Exit':
