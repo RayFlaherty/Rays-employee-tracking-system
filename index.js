@@ -1,3 +1,4 @@
+
 require ('dotenv').config();
 const inquirer = require ('inquirer');
 require ("console.table");
@@ -8,10 +9,10 @@ const EmployeeData = require ('./utils/EmployeeData');
 async function init(){
     try{
         const connection = await mysql.createConnection({
-            host: process.env.DB_HOST,
-            database: process.env.DB_DATABASE = 'employee_tracker',
-            user: process.env.DB_USER = 'root',
-            password: process.env.DB_PASS = 'Vandy1'
+            host: process.env.DB_HOST||'localhost',
+            user: process.env.DB_USER_NAME||'root' ,
+            password: process.env.DB_PASSWORD||'Vandy1',
+            database: process.env.DB_NAME||'employee_tracker'
         })
 
         const employeeData = new EmployeeData(connection)
@@ -40,13 +41,13 @@ async function init(){
                     console.table(await employeeData.viewDepartments())
                     break;
                 case 'Add a Department':
-                    const department = await inquirer.prompt({
+                    const departments = await inquirer.prompt({
                         type:'input',
                         message: 'What is the name of the new department?',
                         name: 'newDeptName',
                         validate: (name) => name !== ""
                     })
-                    console.table(await employeeData.addDepartment(department.newDeptName))
+                    console.table(await employeeData.addDepartment(departments.newDeptName))
                     break;
                 case 'View all Employees':
                     console.table(await employeeData.viewEmployees())
@@ -67,7 +68,7 @@ async function init(){
                         },
                         {
                             type: 'input',
-                            name: 'role_id',
+                            name: 'roles_id',
                             message: "What is the employee's role id",
                             validate: (answer) => answer !== '',
                         },

@@ -14,18 +14,17 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
+  "bugs": {                   
     "url": "https://github.com/RayFlaherty/Rays-employee-tracking-system/issues"
   },
   "homepage": "https://github.com/RayFlaherty/Rays-employee-tracking-system#readme",
   "dependencies": {
     "console.table": "^0.10.0",
     "dotenv": "^14.3.2",
-    "express": "^4.17.2",
     "inquirer": "^8.2.0",
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
-    "jest": "^27.4.7"
+    "nodemon": "^2.0.15"
   }
 }
