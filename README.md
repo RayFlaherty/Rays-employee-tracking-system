@@ -39,3 +39,6 @@ The Purpose of this application is to give an employer the ability to have easy 
 <img src ="src\images\ADD AN EMPLOYEE ACTUAL.PNG" width="1000" height="1000" border="10">
 
 9. I hope you enjoyed a step by step guide through the functionality of the project. Watch the attached video for a narrated walk-through. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yGCz37IREYg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
